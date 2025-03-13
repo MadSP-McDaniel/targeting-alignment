@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Compiled Python files
+*.pyc
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Specific folder
+tests/
+figures/
+data/results
+.vscode
+
+# Data
+*.pkl
+.cache/

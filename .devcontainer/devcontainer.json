@@ -1,0 +1,35 @@
+{
+	"name": "VS Code Dev",
+	"build": {
+		// Sets the run context to one level up instead of the .devcontainer folder.
+		"context": "..",
+		"dockerfile": "../Dockerfile",
+		"target": "vscode_dev" // Allow to use debugging/viz tools.
+	},
+	// "runArgs": ["--gpus", "all"],
+	// Target the mount to a specific folder in the container to avoid conflicts with the default user settings.
+	"workspaceFolder": "/workspace",
+	"mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind",
+        "source=${env:HOME}/git/.cache,target=/workspace/.cache,type=bind" // Allows to use a predefined cache directory and mount it to the container
+    ],
+
+	// Set environment variables.
+	"containerEnv":{
+		"HF_HOME": "/workspace/.cache/huggingface" // Prevents redownloading models when container is stopped
+	},
+	
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"ms-azuretools.vscode-docker",
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-python.debugpy",
+				"ms-toolsai.jupyter"
+			]
+		}
+	}
+}
